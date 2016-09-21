@@ -1,0 +1,88 @@
+let slides = [
+  {
+    src  : "http://placekitten.com/400/300",
+    title      : "Image 1",
+    caption   : "Image 1 caption",
+  },
+  {
+    src  : "http://placekitten.com/300/400",
+    title      : "Image 2",
+    caption   : "Image 2 caption",
+  },
+  {
+    src  : "http://placekitten.com/600/250",
+    title      : "Image 3",
+    caption   : "Image 3 caption",
+  }
+];
+
+const Slide = React.createClass({
+
+  render: function(){
+    let src = this.props.src;
+    let title = this.props.title;
+    let caption = this.props.caption;
+    let active = this.props.active;
+
+    return(
+      <div>
+        <img src={src} />
+        <div className="widget">
+          <div className="img-nav">
+            <h2 className="alignleft">{title}</h2>
+            <div className="alignright">
+              <button class="img-prev-btn nav-btn" onClick={this.prevSlide}>{'<'}</button>
+              <button class="img-next-btn nav-btn" onClick={this.nextSlide}>{'>'}</button>
+            </div>
+          </div>
+          <div className="img-caption">
+            <p>{caption}</p>
+          </div>
+        </div>
+      </div>
+      );
+  }
+});
+
+const Slider = React.createClass({
+
+  getInitialState : function(){
+    return {
+      activeSlide: 0
+    }
+  },
+
+  nextSlide: function(){
+    let slide = this.state.activeSlide + 1 < this.props.slides.length ? this.state.activeSlide + 1 : 0;
+    this.setState({
+      activeSlide: slide
+    });
+  },
+
+  prevSlide: function(){
+    let slide = this.state.activeSlide - 1 < 0 ? this.props.slides.length - 1:  this.state.activeSlide - 1;
+    this.setState({
+      activeSlide: slide
+    });
+  },
+
+  render: function(){
+    let slides = this.props.slides;
+
+    return(
+      <div className="slider">
+      {slides.map((slide, index, array) =>
+          < Slide src={slide.src} title={slide.title} active={index === this.state.activeSlide} caption={slide.caption} /> )}
+            <div className="slider__next" onClick={this.nextSlide}><i className="fa fa-4x fa-arrow-circle-right"></i></div>
+            <div className="slider__previous" onClick={this.previousSlide}><i className="fa fa-4x fa-arrow-circle-left"></i>
+            </div>
+      </div>
+
+      <div className='wrapper'>
+
+      </div>
+    );
+  }
+});
+
+React.render(<Slider slides={slides} />, document.getElementById("slider"));
