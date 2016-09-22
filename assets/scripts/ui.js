@@ -8,8 +8,7 @@ const success = (data) => {
 };
 
 const failure = (error) => {
-  console.error(error);
-  console.log(app.user._id);
+  console.log(error);
 };
 
 

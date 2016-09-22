@@ -13,7 +13,13 @@
       <td>{{plate}}</td>
       <td>{{createdAt}}</td>
       <td>{{type}}</td>
-      <td><button class='remove-vehicle' data-id:{{_id}}>Remove</button></td>
+      <td>
+        <button class="btn btn-warning btn-xs remove-vehicle">Remove</button>
+        <div class="remove-confirmation hidden">
+          <button class="btn btn-danger btn-xs confirm-remove" data-id={{_id}}>Confirm</button>
+          <button class="btn btn-default btn-xs cancel-remove">Cancel</button>
+        </div>
+      </td>
     </tr>
   {{/each}}
 </table>

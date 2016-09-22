@@ -5,9 +5,11 @@ const app = require('./apiurl.js');
 const events = require('./events.js');
 
 
+
 const displayVehicles = function(vehicles){
   const display = require('./vehicles.handlebars');
   $('.content').append(display({ vehicles }));
+  events.addHandlers();
 };
 
 const getVehicles = (success, failure) => {
@@ -22,5 +24,4 @@ const getVehicles = (success, failure) => {
 
 $(() => {
   getVehicles();
-  events.addHandlers();
 });
