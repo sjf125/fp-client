@@ -1,18 +1,17 @@
 'use strict';
 
-// const api = require('./ajax.js');
 const app = require('./apiurl.js');
 const events = require('./events.js');
-
+const ui = require('./ui.js');
 
 
 const displayVehicles = function(vehicles){
   const display = require('./vehicles.handlebars');
-  $('.content').append(display({ vehicles }));
+  $('.content').empty().append(display({ vehicles }));
   events.addHandlers();
 };
 
-const getVehicles = (success, failure) => {
+const getVehicles = function(failure) {
   $.ajax({
     method: 'GET',
     url: app.api + '/vehicles/',
@@ -23,5 +22,11 @@ const getVehicles = (success, failure) => {
 };
 
 $(() => {
-  getVehicles();
+  getVehicles(ui.failure());
 });
+
+
+module.exports = {
+  getVehicles,
+  displayVehicles
+};

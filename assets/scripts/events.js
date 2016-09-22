@@ -2,6 +2,7 @@
 
 const api = require('./ajax.js');
 const ui = require('./ui.js');
+// const index = require('./index.js');
 
 
 const addHandlers = () => {
@@ -29,8 +30,7 @@ const addHandlers = () => {
       }
     };
     event.preventDefault();
-    console.log(data);
-    api.addVehicle(ui.success, ui.failure, data);
+    api.addVehicle(ui.addVehicleSuccess, ui.failure, data);
   });
 };
 

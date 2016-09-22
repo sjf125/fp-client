@@ -1,6 +1,6 @@
 'use strict';
 
-const app = require('./apiurl.js');
+const index = require('./index.js');
 
 
 const success = (data) => {
@@ -11,8 +11,14 @@ const failure = (error) => {
   console.log(error);
 };
 
+const addVehicleSuccess = (data) => {
+  console.log(data);
+  index.getVehicles();
+};
+
 
 module.exports = {
   failure,
-  success
+  success,
+  addVehicleSuccess
 };
