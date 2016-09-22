@@ -1,7 +1,26 @@
 'use strict';
 
-// user require with a reference to bundle the file and use it in this file
-// var example = require('./example');
+// const api = require('./ajax.js');
+const app = require('./apiurl.js');
+const events = require('./events.js');
 
-// use require without a reference to ensure a file is bundled
-require('./example');
+
+const displayVehicles = function(vehicles){
+  const display = require('./vehicles.handlebars');
+  $('.content').append(display({ vehicles }));
+};
+
+const getVehicles = (success, failure) => {
+  $.ajax({
+    method: 'GET',
+    url: app.api + '/vehicles/',
+  }).done(function(data){
+      displayVehicles(data.vehicles);
+    })
+    .fail(failure);
+};
+
+$(() => {
+  getVehicles();
+  events.addHandlers();
+});

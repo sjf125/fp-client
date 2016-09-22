@@ -1,0 +1,19 @@
+<h2>Parked Vehicles</h2>
+<table class="table table-bordered table-hover table-striped">
+  <tr class="info">
+    <td>State</td>
+    <td>Plate</td>
+    <td>Time</td>
+    <td>Type</td>
+    <td>Remove</td>
+  </tr>
+  {{#each vehicles}}
+    <tr>
+      <td>{{state}}</td>
+      <td>{{plate}}</td>
+      <td>{{createdAt}}</td>
+      <td>{{type}}</td>
+      <td><button class='remove-vehicle' data-id:{{_id}}>Remove</button></td>
+    </tr>
+  {{/each}}
+</table>

@@ -2,14 +2,6 @@
 
 const app = require('./apiurl.js');
 
-const getVehicles = (success, failure) => {
-  $.ajax({
-    method: 'GET',
-    url: app.api + '/vehicles/',
-    dataType: 'json',
-  }).done(success)
-    .fail(failure);
-};
 
 const addVehicle = (success, failure, data) => {
   $.ajax({
