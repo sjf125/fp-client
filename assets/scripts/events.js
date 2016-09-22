@@ -1,7 +1,5 @@
 'use strict';
 
-// const getFormFields = require('../../../lib/get-form-fields');
-
 const api = require('./ajax.js');
 const ui = require('./ui.js');
 
@@ -21,6 +19,18 @@ const addHandlers = () => {
         $('.total-row').addClass('hidden');
       });
     });
+  });
+  $('#add-vehicle').on('click', function(event) {
+    let data = {
+      vehicle: {
+        state: $('#state-id').val(),
+        plate: $('#plate-num').val(),
+        type: $('#parking-type').val()
+      }
+    };
+    event.preventDefault();
+    console.log(data);
+    api.addVehicle(ui.success, ui.failure, data);
   });
 };
 
