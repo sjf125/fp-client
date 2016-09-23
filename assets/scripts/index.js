@@ -23,7 +23,7 @@ const displayVehicles = function(vehicles){
 const getVehicles = function() {
   $.ajax({
     method: 'GET',
-    url: app.api + '/vehicles/',
+    url: app.api + 'vehicles/',
   }).done(function(data){
       displayVehicles(data.vehicles);
     });
