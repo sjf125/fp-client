@@ -2,7 +2,6 @@
 
 const api = require('./ajax.js');
 const ui = require('./ui.js');
-// const index = require('./index.js');
 
 
 const addHandlers = () => {

@@ -4,6 +4,14 @@ const app = require('./apiurl.js');
 const events = require('./events.js');
 const chart = require('./piechart.js');
 // const api = require('./ajax.js');
+const moment = require('moment');
+const Handlebars = require('handlebars/runtime')['default'];
+
+
+Handlebars.registerHelper('formatTime', function (date, format) {
+    const mmnt = moment(date);
+    return mmnt.format(format);
+});
 
 
 const displayVehicles = function(vehicles){
