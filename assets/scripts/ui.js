@@ -1,6 +1,8 @@
 'use strict';
 
 const index = require('./index.js');
+const chart = require('./piechart.js');
+const rerender = require('./rerender.js');
 
 
 const success = (data) => {
@@ -11,9 +13,10 @@ const failure = (error) => {
   console.log(error);
 };
 
+
 const addVehicleSuccess = (data) => {
   console.log(data);
-  index.getVehicles();
+  rerender.rerender();
 };
 
 

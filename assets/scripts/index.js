@@ -2,7 +2,8 @@
 
 const app = require('./apiurl.js');
 const events = require('./events.js');
-const ui = require('./ui.js');
+const chart = require('./piechart.js');
+// const api = require('./ajax.js');
 
 
 const displayVehicles = function(vehicles){
@@ -11,18 +12,18 @@ const displayVehicles = function(vehicles){
   events.addHandlers();
 };
 
-const getVehicles = function(failure) {
+const getVehicles = function() {
   $.ajax({
     method: 'GET',
     url: app.api + '/vehicles/',
   }).done(function(data){
       displayVehicles(data.vehicles);
-    })
-    .fail(failure);
+    });
 };
 
 $(() => {
-  getVehicles(ui.failure());
+  getVehicles();
+  chart.getChartData();
 });
 
 

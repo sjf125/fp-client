@@ -1,7 +1,6 @@
 'use strict';
 
 const app = require('./apiurl.js');
-const index = require('./index.js');
 
 
 const addVehicle = (success, failure, data) => {
