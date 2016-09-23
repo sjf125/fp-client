@@ -50,7 +50,7 @@ webpackJsonp([0],[
 	var getVehicles = function getVehicles() {
 	  $.ajax({
 	    method: 'GET',
-	    url: app.api + 'vehicles/'
+	    url: app.api + '/vehicles/'
 	  }).done(function (data) {
 	    displayVehicles(data.vehicles);
 	  });
